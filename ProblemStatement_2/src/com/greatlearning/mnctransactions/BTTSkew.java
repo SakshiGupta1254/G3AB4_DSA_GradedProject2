@@ -12,8 +12,8 @@ public class BTTSkew {
 	}
 	
 	    public static Node node;
-	    static Node prevNode = null;
-	    static Node headNode = null;
+	    static Node firstNode = null;
+	    static Node lastNode = null;
 	    static void BTToSkewed(Node root)
 	    {
 	       
@@ -25,19 +25,18 @@ public class BTTSkew {
 	        BTToSkewed(root.left);
 	        
 	        Node rightNode = root.right;
-	        Node leftNode = root.left;
 	       
-	        if(headNode == null)
+	        if(lastNode == null)
 	        {
-	            headNode = root;
+	            lastNode = root;
 	            root.left = null;
-	            prevNode = root;
+	            firstNode = root;
 	        }
 	        else
 	        {
-	            prevNode.right = root;
+	            firstNode.right = root;
 	            root.left = null;
-	            prevNode = root;
+	            firstNode = root;
 	        }
 	       
 	      
@@ -65,7 +64,7 @@ public class BTTSkew {
 	        tree.node.right.left= newNode(55);
 
 	        BTToSkewed(node);
-	        RightSkewed(headNode);
+	        RightSkewed(lastNode);
 	    }
 	
 }
